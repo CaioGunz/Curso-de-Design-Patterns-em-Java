@@ -1,20 +1,25 @@
 package br.com.caio.loja.pedido;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import br.com.caio.loja.orcamento.Orcamento;
+import br.com.caio.loja.pedido.acao.AcaoAposGerarPedido;
 
 public class GeraPedidoHandler {
 	
-	// contrutor com injecao de dependencias: repository, services, etc.
+	private List<AcaoAposGerarPedido> acoes;
 	
+	public GeraPedidoHandler(List<AcaoAposGerarPedido> acoes) {
+		this.acoes = acoes;
+	}
+
 	public void execute(GeraPedido dados) {
 		Orcamento orcamento = new Orcamento(dados.getValorOrcamento(), dados.getQuantidadeItens());
 		
 		Pedido pedido = new Pedido(dados.getCliente(), LocalDateTime.now(), orcamento);
 		
-		System.out.println("Salvar pedido no Banco de Dados");
-		System.out.println("Enviar um E-mail com dados do novo pedido");
+		acoes.forEach(a -> a.executarAcao(pedido));
 	}
 
 }
