@@ -15,10 +15,6 @@ public class TestePedido {
 		int quantidadeItens = Integer.parseInt("2");
 		
 		GeraPedido gerador = new GeraPedido(cliente, valorOrcamento, quantidadeItens);
-		GeraPedidoHandler handler = new GeraPedidoHandler(
-				Arrays.asList(new SalvarPedidoNoBancoDeDados(),
-				new EnviarEmailPedido()));
-		handler.execute(gerador);
 		
 	}
 

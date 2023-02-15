@@ -3,6 +3,7 @@ package br.com.caio.loja.orcamento;
 import java.math.BigDecimal;
 
 import br.com.caio.loja.situacao.EmAnalise;
+import br.com.caio.loja.situacao.Finalizado;
 import br.com.caio.loja.situacao.SituacaoOrcamento;
 
 public class Orcamento {
@@ -48,6 +49,10 @@ public class Orcamento {
 	
 	public void setSituacao(SituacaoOrcamento situacao) {
 		this.situacao = situacao;
+	}
+
+	public boolean isFinalizado() {
+		return situacao instanceof Finalizado;
 	}
 
 }
