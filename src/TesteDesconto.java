@@ -11,7 +11,7 @@ public class TesteDesconto {
 	public static void main(String[] args) {
 		
 		Orcamento primeiro = new Orcamento();
-		primeiro.adicionarItem(new ItemOrcamento(new BigDecimal(200)));
+		primeiro.adicionarItem(new ItemOrcamento(new BigDecimal("200")));
 		
 		CalculadoraDeDescontos calcular = new CalculadoraDeDescontos();
 		System.out.println(calcular.calcular(primeiro));
